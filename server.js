@@ -7,7 +7,7 @@ const app = express();
 
 // CORS Policy Configuration for Netlify
 app.use(cors({
-    origin: ['https://your-netlify-site-name.netlify.app', 'http://localhost:5500'], // Update this with your Netlify URL
+    origin: ['https://radiant-buttercream-1947dd.netlify.app', 'http://localhost:5500'], // Update this with your Netlify URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
