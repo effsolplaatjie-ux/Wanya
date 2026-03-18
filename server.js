@@ -21,5 +21,13 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 
+// 3. BIND ROUTES
+app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
+
+// Root test route
+app.get('/', (req, res) => res.send("Wanya Tsotsi API is Online"));
+
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Wanya Tsotsi Backend live on port ${PORT}`));
