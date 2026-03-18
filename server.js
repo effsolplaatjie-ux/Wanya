@@ -2,22 +2,24 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/posts');
+const userRoutes = require('./routes/users');
 
 const app = express();
 
-// CORS Policy Configuration for Netlify
+// CORS Settings for Netlify/Render compatibility
 app.use(cors({
-    origin: ['https://radiant-buttercream-1947dd.netlify.app', 'http://localhost:5500'], // Update this with your Netlify URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    origin: '*', // For production, replace with your specific Netlify URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Wanya Tsotsi server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => console.log(`Wanya Tsotsi Backend live on port ${PORT}`));
